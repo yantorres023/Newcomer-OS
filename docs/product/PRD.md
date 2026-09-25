@@ -67,7 +67,7 @@ Information/organisation only; not legal advice; not affiliated with any authori
 - Native-speaker review of German content ✗
 - Trademark check of name ✗
 - Store accounts, signing, support URL/email ✗
-- CI green on Android + iOS builds ✗ (pending first run)
+- CI green on Android + iOS builds ✅ (run 36142127506)
 
 ## VALIDATION DEBT
 See `docs/research/VALIDATION_DEBT.md`.

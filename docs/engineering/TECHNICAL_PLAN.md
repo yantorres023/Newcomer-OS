@@ -72,6 +72,6 @@ Deployment target 15.0; notification delegate set in AppDelegate; display name "
 Allowed later, isolated behind an interface, always with deterministic fallback: plain-language rewrite of already-sourced content, translation drafts for human review, summarising a source page for reviewers. Never: deciding applicability, inventing requirements, answering individual legal questions.
 
 ## Known technical limitations
-- Android/iOS builds not executed in this environment (no Android SDK; Linux). CI must be run.
+- Android/iOS builds could not run in the build container (no Android SDK; Linux) but pass in GitHub Actions (run 36142127506).
 - Notification behaviour not device-tested.
 - No app-level iOS privacy manifest file added (plugins ship their own); verify at first App Store upload.
