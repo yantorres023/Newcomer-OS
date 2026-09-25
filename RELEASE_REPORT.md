@@ -5,7 +5,7 @@ _Run date: 2026-09-25. Branch: `claude/nifty-babbage-49fdtw`._
 ## Executive Summary
 I compared seven migration corridors. The one I picked is **non-EU international students arriving in Germany**, with students from India as the first community to target. It has the most repeatable, law-based post-arrival sequence, the best official sources, stable rules, and steps that can be explained without individual legal advice. The red team concluded **GO** with a narrowed thesis.
 
-I built a working Flutter MVP called **Erstmal**. It is local-first, works offline and needs no account. It has a structured, versioned, validated rules dataset: 19 rules and 26 official sources, in English and German, with Berlin and Munich city packs. A deterministic rules engine produces a personal Today / Upcoming / Done checklist. Each task has a detail screen with its official source and the date it was last checked, plus reminders and notes. Analyzer is clean and **95/95 tests pass**. CI workflows are written for tests, Android APK/AAB and an iOS build without signing; they have not run yet.
+I built a working Flutter MVP called **Erstmal**. It is local-first, works offline and needs no account. It has a structured, versioned, validated rules dataset: 19 rules and 26 official sources, in English and German, with Berlin and Munich city packs. A deterministic rules engine produces a personal Today / Upcoming / Done checklist. Each task has a detail screen with its official source and the date it was last checked, plus reminders and notes. Analyzer is clean and **95/95 tests pass**. GitHub Actions CI is green: tests, the Android APK/AAB build, and the iOS build without signing all passed.
 
 **Main caveat:** this environment could not open German government websites directly. Every rule was checked through search-engine extracts of the official pages, and every rule is flagged for human source and legal review. That review must happen before a public launch.
 
@@ -146,12 +146,12 @@ Only dataset https links can be opened (tested against http, javascript: and int
 ## Android
 - Configured: desugaring, notification receivers, permissions, backups off, https query, label "Erstmal".
 - **`flutter build apk` could not run here.** The container has no Android SDK, and `dl.google.com` is blocked by the environment's network policy.
-- The CI job `android` builds the APK and AAB and uploads them as artifacts.
+- **CI run #1 (https://github.com/yantorres023/Newcomer-OS/actions/runs/36142127506): the `android` job passed.** It built the release APK and the AAB and uploaded them as the `android-builds` artifact.
 - The application ID `app.erstmal.newcomer_os` is a placeholder. Release builds are debug-signed until an upload key exists.
 
 ## iOS
 - Configured: notification delegate, display name, localizations, encryption flag.
-- CI job `ios` (macos-latest) runs the tests and `flutter build ios --release --no-codesign`.
+- **CI run #1 (https://github.com/yantorres023/Newcomer-OS/actions/runs/36142127506): the `ios` job passed** on macos-latest: 95 tests plus `flutter build ios --release --no-codesign`.
 - Signing and TestFlight need an Apple Developer account (see `release/ios/README.md`).
 
 ## Monetization
@@ -170,7 +170,6 @@ Free V1 with no ads or affiliates. Primary hypothesis: university and student-un
 None known from tests. Not yet verified:
 - behaviour on real devices, especially notification delivery under battery optimisation
 - the timezone edge when the device clock is still in the origin country
-- the iOS build (CI has not run)
 
 ## Known Knowledge Gaps
 - Munich: no official source yet for collecting the residence card or for family members (the app falls back to federal and BAMF sources).
@@ -197,7 +196,7 @@ None known from tests. Not yet verified:
   5. Bump the dataset version.
 - **Expected result:** validator warnings for "pending review" disappear, and the dataset is safe for beta or launch.
 
-**2. Run CI on GitHub**
+**2. ~~Run CI on GitHub~~ — done, run 36142127506 is green; download the `android-builds` artifact to side-load the APK**
 - **Why:** the Android and iOS builds could not run here.
 - **Exact steps:**
   1. Make sure GitHub Actions is enabled for the repo.
@@ -278,5 +277,5 @@ All 19 rules and all 26 sources. The per-rule questions are in `docs/research/SO
 ## Final Repository Status
 - Branch `claude/nifty-babbage-49fdtw`, pushed.
 - Analyzer clean, 95/95 tests passing.
-- CI defined but not yet run.
+- **CI green:** quality, android and ios jobs all passed on commit `ac7ec92` (run 36142127506).
 - No PR opened (none requested).

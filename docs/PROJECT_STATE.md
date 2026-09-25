@@ -3,7 +3,7 @@
 _Last updated: 2026-09-25 (end of autonomous run)_
 
 ## CURRENT PHASE
-MVP complete, pre-beta. Waiting on human source/legal review, store accounts, and first CI run.
+MVP complete, pre-beta. CI green (run 36142127506: quality, Android APK/AAB, iOS no-codesign). Waiting on human source/legal review and store accounts.
 
 ## CURRENT CORRIDOR
 Non-EU international students (beachhead: students from India) → Germany, first ~90 days after arrival on a national study visa. City packs: Berlin, Munich; other cities via federal rules + BAMF-NAvI.
@@ -44,4 +44,4 @@ Unreviewed rule content (blocking for public launch); distribution; monetization
 - Human: store accounts, signing, legal review, source review, trademark search, publisher identity.
 
 ## NEXT ACTION
-Run CI on GitHub; human source + legal review of residence-permit rules; recruit 30–50 beta users for the next intake.
+Human source + legal review of residence-permit rules; recruit 30–50 beta users for the next intake.
