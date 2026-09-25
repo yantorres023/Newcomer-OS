@@ -1,0 +1,312 @@
+{
+  "appTitle": "Erstmal",
+  "welcomeTitle": "Your first 90 days in Germany, step by step",
+  "welcomeBody": "For international students: a personal checklist of what to do after arriving, in which order, by when — with the official source for every step.",
+  "welcomeNotGovernment": "Erstmal is an independent app. It is not a government service and is not affiliated with any authority or university.",
+  "welcomePrivacy": "No account. Your answers stay on this phone.",
+  "disclaimerTitle": "Before you start",
+  "disclaimerBody": "Erstmal organises and explains public information to help you plan. It is not legal advice and does not decide what applies to you. Rules and procedures can change: always check the linked official source before acting on anything important. If your situation is unusual or something has gone wrong (for example a refused application or an expired visa), contact the authority or a qualified advisor.",
+  "acceptAndStart": "I understand — start",
+  "languageLabel": "Language",
+  "languageSystem": "Device language",
+  "languageEnglish": "English",
+  "languageGerman": "Deutsch",
+  "next": "Next",
+  "back": "Back",
+  "cancel": "Cancel",
+  "save": "Save",
+  "delete": "Delete",
+  "whyWeAsk": "Why we ask",
+  "stepOf": "Question {current} of {total}",
+  "@stepOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "qEntryTitle": "How did you enter Germany?",
+  "qEntryWhy": "This decides which residence-permit steps you see.",
+  "entryNationalVisa": "With a national visa for studies (\"D\" visa)",
+  "entryVisaFree": "Without a visa (e.g. citizens of the USA, Canada, Japan)",
+  "entryEu": "I am an EU, EEA or Swiss citizen",
+  "entryHelp": "Not sure? Look at the visa sticker in your passport. A national visa shows the letter \"D\".",
+  "qStageTitle": "What are you starting?",
+  "qStageWhy": "Some cities have different official pages for degree studies and preparatory courses.",
+  "stageDegree": "A degree programme (Bachelor, Master, PhD)",
+  "stagePrep": "A preparatory course (Studienkolleg or a course before studies)",
+  "qCityTitle": "Where will you live?",
+  "qCityWhy": "Offices and procedures are local. We link the official pages for your city.",
+  "cityBerlin": "Berlin",
+  "cityMunich": "Munich",
+  "cityOther": "Another city or town",
+  "cityOtherHelp": "You will get the federal rules plus official tools to find your local offices.",
+  "qArrivalTitle": "When did (or will) you arrive in Germany?",
+  "qArrivalWhy": "Some time limits count from your arrival.",
+  "qMoveInTitle": "When did (or will) you move into your long-term home?",
+  "qMoveInWhy": "Moving in starts the two-week deadline to register your address.",
+  "moveInUnknown": "I don't have a long-term home yet",
+  "qVisaTitle": "When does your visa end?",
+  "qVisaWhy": "You must apply for your residence permit before this date.",
+  "visaHelp": "It is printed on the visa in your passport (field \"until\" / \"bis\").",
+  "visaUnknown": "I'll add it later",
+  "qMoreTitle": "A few more questions",
+  "qMoreWhy": "Each answer adds or removes specific tasks. We don't ask for your name, nationality or documents.",
+  "age30Plus": "I am 30 or older",
+  "age30PlusHelp": "Health insurance rules for students change at 30.",
+  "plansToWork": "I plan to work while studying",
+  "familyJoining": "My spouse or children are coming with me",
+  "pickDate": "Choose date",
+  "changeDate": "Change date",
+  "summaryTitle": "Your checklist is ready",
+  "summaryBody": "{count, plural, =1{1 task selected for your situation.} other{{count} tasks selected for your situation.}}",
+  "@summaryBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "seeChecklist": "See my checklist",
+  "saveAnswers": "Save answers",
+  "tabToday": "Today",
+  "tabUpcoming": "Upcoming",
+  "tabDone": "Done",
+  "progress": "{done} of {total} done",
+  "@progress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "nextDeadline": "Next deadline: {date}",
+  "@nextDeadline": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "emptyToday": "Nothing urgent right now. Look at Upcoming to see what comes next.",
+  "emptyUpcoming": "Nothing scheduled later.",
+  "emptyDone": "Tasks you mark as done appear here.",
+  "whenItHappens": "When it happens",
+  "settings": "Settings",
+  "dueOn": "Due {date}",
+  "@dueOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "dueToday": "Due today",
+  "dueInDays": "{days, plural, =1{Due tomorrow} other{Due in {days} days}}",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "overdueSince": "Overdue since {date}",
+  "@overdueSince": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "followUpOn": "Follow up on {date}",
+  "@followUpOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "suggestedBy": "Suggested by {date}",
+  "@suggestedBy": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "startFrom": "Start from {date}",
+  "@startFrom": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "asSoonAsPossible": "As soon as possible",
+  "addDateForDeadline": "Add your {field} to see the deadline",
+  "@addDateForDeadline": {
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "fieldMoveIn": "move-in date",
+  "fieldVisaExpiry": "visa end date",
+  "fieldPermitExpiry": "residence card expiry date",
+  "fieldArrival": "arrival date",
+  "firstDo": "First: {title}",
+  "@firstDo": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "noLongerApplies": "No longer applies to your answers",
+  "updatedSinceCompletion": "Information updated since you completed this",
+  "overdueLabel": "Overdue",
+  "completedOn": "Done on {date}",
+  "@completedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "sectionWhy": "Why this matters",
+  "sectionWho": "Why you see this",
+  "whoAlways": "This applies to everyone who moves to Germany in this situation.",
+  "whoBased": "Selected from your answers about: {fields}.",
+  "@whoBased": {
+    "placeholders": {
+      "fields": {
+        "type": "String"
+      }
+    }
+  },
+  "answerEntry": "how you entered",
+  "answerStage": "what you study",
+  "answerCity": "your city",
+  "answerAge": "age",
+  "answerWork": "work plans",
+  "answerFamily": "family",
+  "answerDates": "your dates",
+  "sectionWhen": "When",
+  "basisLegal": "Legal deadline (from the law or the authority)",
+  "basisGuidance": "Follow-up date based on official guidance — not a deadline for you",
+  "basisSuggestion": "Our suggestion — not a legal deadline",
+  "suggestedStartNote": "We suggest starting by {date} because appointments can take weeks.",
+  "@suggestedStartNote": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "timingNone": "No fixed date.",
+  "timingAsap": "No fixed legal date — do it as soon as you reasonably can.",
+  "timingEvent": "Only relevant when this happens.",
+  "editDates": "Edit my dates",
+  "sectionDocs": "What you need",
+  "docOfficial": "Named by an official source",
+  "docCommon": "Commonly requested — check the official list",
+  "sectionSteps": "Steps",
+  "sectionSources": "Official source",
+  "lastChecked": "Last checked by us: {date}",
+  "@lastChecked": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "pendingReview": "Pending editorial re-check",
+  "openSource": "Open official page",
+  "copyLink": "Copy link",
+  "linkCopied": "Link copied",
+  "openFailed": "Couldn't open the page. Copy the link and open it in your browser. If the page has moved, search the authority's website for its title.",
+  "needsInternet": "Opens in your browser — needs internet.",
+  "publicBodyLabel": "Publicly funded organisation (not a government authority)",
+  "governmentLabel": "Government / official authority",
+  "explanationLabel": "Our plain-language explanation. If it differs from the official source, the official source is correct.",
+  "officialTerms": "Words you will see",
+  "sectionNotes": "Good to know",
+  "myNotes": "My notes",
+  "notesHint": "Private note — stays on this phone. Don't store passport or ID numbers.",
+  "noteSaved": "Note saved",
+  "markComplete": "Mark as done",
+  "markIncomplete": "Mark as not done",
+  "reconfirm": "I've checked the update",
+  "reminder": "Reminder",
+  "setReminder": "Set a reminder",
+  "reminderOn": "Reminder on {date}",
+  "@reminderOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "removeReminder": "Remove reminder",
+  "remindWeekBefore": "1 week before the date",
+  "remindDayBefore": "1 day before the date",
+  "remindTomorrow": "Tomorrow",
+  "remindPick": "Pick a date",
+  "reminderPermissionDenied": "Notifications are turned off for Erstmal. You can allow them in your phone settings.",
+  "reminderSaved": "Reminder set",
+  "professionalHelp": "When to get individual help",
+  "dependencies": "Do this first",
+  "recommendedAfter": "Usually easier after",
+  "fallbackLanguage": "Not yet available in your language — showing English.",
+  "kindPractical": "Practical tip — not a legal requirement",
+  "kindInformation": "Good to know",
+  "kindOfficial": "Official requirement",
+  "kindProcess": "Official process",
+  "reportProblem": "Report outdated or wrong information",
+  "reportCopied": "A report was copied to your clipboard. Paste it into an email or message to the Erstmal team. It contains only the task and source, no personal data.",
+  "yourSituation": "Your situation",
+  "editAnswers": "Edit answers",
+  "permitExpiryLabel": "Residence card expires on",
+  "notSet": "Not set",
+  "notifications": "Notifications",
+  "showTaskNames": "Show task names in reminders",
+  "showTaskNamesHelp": "Off: reminders only say you have a task coming up, so people who see your lock screen learn nothing about your situation.",
+  "about": "About",
+  "dataVersion": "Checklist data {version}, released {date}",
+  "@dataVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "sourcesTitle": "All official sources",
+  "sourcesIntro": "Every task links to where the rule comes from. We checked each page on the date shown. Pages can change after that.",
+  "disclaimer": "Disclaimer",
+  "privacy": "Privacy",
+  "privacySummary": "Your answers, progress, notes and reminders are stored only on this phone. There is no account, no server and no tracking. Deleting the app or using \"Delete all my data\" removes everything.",
+  "exportData": "Copy my data",
+  "exportCopied": "Your data was copied to the clipboard (JSON). Be careful where you paste it.",
+  "deleteData": "Delete all my data",
+  "deleteConfirmTitle": "Delete everything?",
+  "deleteConfirmBody": "Your answers, progress, notes and reminders will be removed from this phone. This cannot be undone.",
+  "datasetErrorTitle": "The checklist could not be loaded",
+  "datasetErrorBody": "The built-in checklist data failed its safety checks, so we are not showing possibly wrong information. Please update the app. Until then, use the official websites of your city and your university's international office.",
+  "saveFailed": "Your last change could not be saved on this phone. Check free storage and try again.",
+  "recoveredNotice": "We could not read your saved data and started fresh. A copy of the old file was kept on this phone.",
+  "euNotice": "As an EU, EEA or Swiss citizen you do not need a residence permit for studies. Your checklist covers registration and other everyday steps.",
+  "reminderGenericTitle": "Erstmal",
+  "reminderGenericBody": "You have a checklist task coming up.",
+  "openTask": "Open task",
+  "dismiss": "OK"
+}

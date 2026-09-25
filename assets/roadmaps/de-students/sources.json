@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "src.bmg.17",
+      "title": "Bundesmeldegesetz (BMG) § 17 Anmeldung, Abmeldung",
+      "title_language": "de",
+      "authority": "Bundesministerium der Justiz (Gesetze im Internet)",
+      "authority_type": "federal_law",
+      "url": "https://www.gesetze-im-internet.de/bmg/__17.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "Whoever moves into a dwelling must register with the registration authority within two weeks of moving in.",
+        "Whoever moves out of a dwelling and does not move into a new dwelling in Germany must deregister within two weeks of moving out."
+      ]
+    },
+    {
+      "id": "src.bmg.19",
+      "title": "Bundesmeldegesetz (BMG) § 19 Mitwirkung des Wohnungsgebers",
+      "title_language": "de",
+      "authority": "Bundesministerium der Justiz (Gesetze im Internet)",
+      "authority_type": "federal_law",
+      "url": "https://www.gesetze-im-internet.de/bmg/__19.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "The landlord (Wohnungsgeber) must confirm the move-in in writing or electronically within the § 17(1) deadline.",
+        "The confirmation contains landlord name/address, owner name if different, move-in date, address, names of persons registering.",
+        "If the landlord does not provide it, the person registering must inform the registration authority without delay."
+      ]
+    },
+    {
+      "id": "src.bmi.meldewesen",
+      "title": "BMI – Meldewesen",
+      "title_language": "de",
+      "authority": "Bundesministerium des Innern",
+      "authority_type": "federal_ministry",
+      "url": "https://www.bmi.bund.de/DE/themen/moderne-verwaltung/verwaltungsrecht/meldewesen/meldewesen-node.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Federal overview page on residence registration exists at this URL."]
+    },
+    {
+      "id": "src.berlin.anmeldung",
+      "title": "Wohnsitz – Alleinige Wohnung oder Hauptwohnung anmelden (Service Berlin)",
+      "title_language": "de",
+      "authority": "Land Berlin – Bürgerämter",
+      "authority_type": "city",
+      "url": "https://service.berlin.de/dienstleistung/120686/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "Register within 14 days of moving into a primary or sole residence in Berlin.",
+        "A Wohnungsgeberbestätigung and the registration form are required; appointment at a Bürgeramt, in person or by proxy."
+      ]
+    },
+    {
+      "id": "src.berlin.abmeldung",
+      "title": "Abmeldung einer Wohnung (Service Berlin)",
+      "title_language": "de",
+      "authority": "Land Berlin – Bürgerämter",
+      "authority_type": "city",
+      "url": "https://service.berlin.de/dienstleistung/120335/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Berlin service page for deregistering a dwelling exists at this URL."]
+    },
+    {
+      "id": "src.berlin.study_permit",
+      "title": "Residence permit for the purpose of full-time studies (Service Berlin)",
+      "title_language": "en",
+      "authority": "Landesamt für Einwanderung (LEA) Berlin",
+      "authority_type": "city",
+      "url": "https://service.berlin.de/dienstleistung/305244/en/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "Granted for full-time studies at a state-recognised university; includes preparatory measures and compulsory internships.",
+        "Generally granted and extended for two years; allows 140 full working days per calendar year.",
+        "Enrolment or conditional admission is required.",
+        "Apply online ('Application for a residence permit for language and study purposes'); the authority contacts you and may invite you to an in-person appointment with original documents."
+      ]
+    },
+    {
+      "id": "src.berlin.fiktion",
+      "title": "Fiktionsbescheinigung (Fictional Certificate) (Service Berlin)",
+      "title_language": "en",
+      "authority": "Landesamt für Einwanderung (LEA) Berlin",
+      "authority_type": "city",
+      "url": "https://service.berlin.de/dienstleistung/326233/en/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Berlin service page for the fictional certificate exists at this URL."]
+    },
+    {
+      "id": "src.berlin.eat",
+      "title": "Elektronischer Aufenthaltstitel (eAT) – Ausgabe (Service Berlin)",
+      "title_language": "de",
+      "authority": "Landesamt für Einwanderung (LEA) Berlin / Bürgerämter",
+      "authority_type": "city",
+      "url": "https://service.berlin.de/dienstleistung/326231/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "The PIN letter is handed out when the eAT is ordered.",
+        "The card can usually be handed out about 4–5 weeks after ordering.",
+        "Collection is possible by an authorised person aged at least 14; bring passport and any previous eAT.",
+        "Collection must be at the authority that ordered the card."
+      ]
+    },
+    {
+      "id": "src.berlin.family",
+      "title": "Residence permit for spouses and children of skilled workers, students, trainees, scientists and teachers (Service Berlin)",
+      "title_language": "en",
+      "authority": "Landesamt für Einwanderung (LEA) Berlin",
+      "authority_type": "city",
+      "url": "https://service.berlin.de/dienstleistung/327471/en/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Berlin service page for family members of students exists at this URL."]
+    },
+    {
+      "id": "src.muenchen.anmeldung",
+      "title": "Wohnsitzanmeldung – Landeshauptstadt München",
+      "title_language": "de",
+      "authority": "Landeshauptstadt München – Bürgerbüro",
+      "authority_type": "city",
+      "url": "https://stadt.muenchen.de/service/info/wohnsitzanmeldung/1063475/n0/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "The law provides 14 days for registration.",
+        "Registration is possible online (main residence only) or in person at a Bürgerbüro."
+      ]
+    },
+    {
+      "id": "src.muenchen.abmeldung",
+      "title": "Wohnsitz abmelden – Landeshauptstadt München",
+      "title_language": "de",
+      "authority": "Landeshauptstadt München – Bürgerbüro",
+      "authority_type": "city",
+      "url": "https://stadt.muenchen.de/service/info/wohnsitz-abmelden/1063486/n0/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Munich service page for deregistration exists at this URL."]
+    },
+    {
+      "id": "src.muenchen.study_permit",
+      "title": "Aufenthaltserlaubnis – Studium (Landeshauptstadt München)",
+      "title_language": "de",
+      "authority": "Landeshauptstadt München – Servicestelle für Zuwanderung und Einbürgerung",
+      "authority_type": "city",
+      "url": "https://stadt.muenchen.de/service/info/studenten/1089339/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "Application form and documents can be submitted online or by post.",
+        "Requires admission to full-time studies at a state or state-recognised university or comparable institution.",
+        "Generally granted for three years (or the duration of studies if shorter) and can be extended.",
+        "Employment up to 140 days or 280 half-days per year in total, including student jobs."
+      ]
+    },
+    {
+      "id": "src.muenchen.prep_permit",
+      "title": "Aufenthaltserlaubnis – Studienvorbereitung (Landeshauptstadt München)",
+      "title_language": "de",
+      "authority": "Landeshauptstadt München – Servicestelle für Zuwanderung und Einbürgerung",
+      "authority_type": "city",
+      "url": "https://stadt.muenchen.de/service/info/auslanderbehorde/10257776/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Munich service page for study-preparation residence permits exists at this URL."]
+    },
+    {
+      "id": "src.aufenthg.16b",
+      "title": "Aufenthaltsgesetz (AufenthG) § 16b Studium",
+      "title_language": "de",
+      "authority": "Bundesministerium der Justiz (Gesetze im Internet)",
+      "authority_type": "federal_law",
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "Students from third countries may work 140 full days or 280 half days per year without approval of the Federal Employment Agency.",
+        "Student auxiliary jobs (studentische Nebentätigkeiten) are not counted towards this limit."
+      ]
+    },
+    {
+      "id": "src.aufenthg.81",
+      "title": "Aufenthaltsgesetz (AufenthG) § 81 Beantragung des Aufenthaltstitels",
+      "title_language": "de",
+      "authority": "Bundesministerium der Justiz (Gesetze im Internet)",
+      "authority_type": "federal_law",
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__81.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "If an extension or another residence title is applied for before the current title expires, the current title is deemed to continue until the authority decides (para. 4).",
+        "This does not apply to a Schengen visa under § 6(1).",
+        "A certificate of this effect (Fiktionsbescheinigung) is issued."
+      ]
+    },
+    {
+      "id": "src.aufenthv.41",
+      "title": "Aufenthaltsverordnung (AufenthV) § 41 Vergünstigung für Angehörige bestimmter Staaten",
+      "title_language": "de",
+      "authority": "Bundesministerium der Justiz (Gesetze im Internet)",
+      "authority_type": "federal_law",
+      "url": "https://www.gesetze-im-internet.de/aufenthv/__41.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "Nationals of Australia, Israel, Japan, Canada, the Republic of Korea, New Zealand and the USA may enter without a visa and obtain the residence title in Germany.",
+        "The residence title must be applied for within three months after entry."
+      ]
+    },
+    {
+      "id": "src.bamf.navi",
+      "title": "BAMF-NAvI – Behörden",
+      "title_language": "de",
+      "authority": "Bundesamt für Migration und Flüchtlinge (BAMF)",
+      "authority_type": "federal_agency",
+      "url": "https://bamf-navi.bamf.de/de/Themen/Behoerden/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Search by postcode/place of residence to find the responsible foreigners' authority (Ausländerbehörde) and counselling services."]
+    },
+    {
+      "id": "src.personalausweisportal.eat",
+      "title": "Personalausweisportal – Der elektronische Aufenthaltstitel",
+      "title_language": "de",
+      "authority": "Bundesministerium des Innern (Personalausweisportal)",
+      "authority_type": "federal_ministry",
+      "url": "https://www.personalausweisportal.de/Webs/PA/DE/buergerinnen-und-buerger/elektronischer-aufenthaltstitel/elektronischer-aufenthaltstitel-node.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Federal information page on the electronic residence permit card (eAT) exists at this URL."]
+    },
+    {
+      "id": "src.bzst.idnr",
+      "title": "BZSt – Steuerliche Identifikationsnummer",
+      "title_language": "de",
+      "authority": "Bundeszentralamt für Steuern (BZSt)",
+      "authority_type": "federal_agency",
+      "url": "https://www.bzst.de/DE/Privatpersonen/SteuerlicheIdentifikationsnummer/steuerlicheidentifikationsnummer_node.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "The tax ID is assigned automatically on first registration in Germany once the registration office transmits the data, and is sent by post.",
+        "If it has not arrived three months after registration, a copy of the ID document and registration confirmation can be sent to the BZSt."
+      ]
+    },
+    {
+      "id": "src.bzst.idnr_faq",
+      "title": "BZSt – Identifikationsnummer – Fragen und Antworten",
+      "title_language": "de",
+      "authority": "Bundeszentralamt für Steuern (BZSt)",
+      "authority_type": "federal_agency",
+      "url": "https://www.bzst.de/DE/Privatpersonen/SteuerlicheIdentifikationsnummer/FAQ/faq_node.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Official FAQ on the tax identification number; indicates typical delivery 3–4 weeks after assignment."]
+    },
+    {
+      "id": "src.rundfunkbeitrag.students",
+      "title": "Informationen für Studierende – Rundfunkbeitrag",
+      "title_language": "de",
+      "authority": "ARD ZDF Deutschlandradio Beitragsservice",
+      "authority_type": "public_body",
+      "url": "https://www.rundfunkbeitrag.de/buergerinnen-und-buerger/informationen/informationen-fuer-studierende",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "One contribution per dwelling, regardless of the number of residents or devices.",
+        "In a shared flat (WG) one person registers and pays; residents decide who.",
+        "BAföG recipients can apply for exemption; the exemption does not extend to co-residents."
+      ]
+    },
+    {
+      "id": "src.daad.health_insurance",
+      "title": "Healthcare and Health Insurance – DAAD",
+      "title_language": "en",
+      "authority": "Deutscher Akademischer Austauschdienst (DAAD)",
+      "authority_type": "public_body",
+      "url": "https://www.daad.de/en/study-and-research-in-germany/plan-your-studies/health-insurance/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "Proof of health insurance is required for university enrolment and for the residence permit.",
+        "Students up to age 30 generally take out statutory health insurance at student rates; from 30 different rules and rates apply.",
+        "Relying on home-country insurance requires a certificate of exemption from a German statutory insurer."
+      ]
+    },
+    {
+      "id": "src.daad.enrolment",
+      "title": "Die Einschreibung – DAAD",
+      "title_language": "de",
+      "authority": "Deutscher Akademischer Austauschdienst (DAAD)",
+      "authority_type": "public_body",
+      "url": "https://www.daad.de/de/in-deutschland-studieren/voraussetzungen/einschreibung/",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["DAAD guidance on university enrolment (Einschreibung / Immatrikulation), including health-insurance proof."]
+    },
+    {
+      "id": "src.mig.study_work",
+      "title": "Study and work – Make it in Germany",
+      "title_language": "en",
+      "authority": "Federal Government portal (Make it in Germany)",
+      "authority_type": "federal_portal",
+      "url": "https://www.make-it-in-germany.com/en/study-training/studies-in-germany/work",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Federal portal page on working while studying (140 full / 280 half days)."]
+    },
+    {
+      "id": "src.aa.sperrkonto",
+      "title": "Ein Sperrkonto eröffnen und schließen – Auswärtiges Amt",
+      "title_language": "de",
+      "authority": "Auswärtiges Amt (Federal Foreign Office)",
+      "authority_type": "federal_ministry",
+      "url": "https://www.auswaertiges-amt.de/de/service/visa-und-aufenthalt/nationale-visa/visa-schule-studium-sprachkurs/sperrkonto",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": ["Official page on opening and closing a blocked account; the blocked account pays out a fixed monthly amount."]
+    },
+    {
+      "id": "src.drv.svnr",
+      "title": "Versicherungsnummernachweis (Sozialversicherungsausweis) – Deutsche Rentenversicherung",
+      "title_language": "de",
+      "authority": "Deutsche Rentenversicherung",
+      "authority_type": "public_body",
+      "url": "https://www.deutsche-rentenversicherung.de/DRV/DE/Rente/Allgemeine-Informationen/Sozialversicherungsausweis/sozialversicherungsausweis_node.html",
+      "last_verified_at": "2026-09-25",
+      "verification_method": "search_index",
+      "verified_claims": [
+        "The social insurance number is sent automatically when an employer first registers the employee with the statutory health insurer.",
+        "The number is assigned once and is valid for life; the certificate is free of charge.",
+        "If it does not arrive it can be requested from the Deutsche Rentenversicherung or the health insurer."
+      ]
+    }
+  ]
+}

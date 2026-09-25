@@ -1,0 +1,977 @@
+{
+  "schema_version": 1,
+  "dataset_id": "de-students",
+  "version": "2026.09.1",
+  "released_at": "2026-09-25",
+  "jurisdiction": "DE",
+  "languages": ["en", "de"],
+  "default_language": "en",
+  "documents": {
+    "passport": {"en": "Passport (with your visa, if you have one)", "de": "Reisepass (mit Visum, falls vorhanden)"},
+    "landlord_confirmation": {"en": "Landlord confirmation (Wohnungsgeberbestätigung)", "de": "Wohnungsgeberbestätigung"},
+    "registration_form": {"en": "Registration form (Anmeldeformular)", "de": "Anmeldeformular"},
+    "registration_certificate": {"en": "Registration certificate (Meldebescheinigung)", "de": "Meldebescheinigung"},
+    "health_insurance_proof": {"en": "Proof of health insurance", "de": "Nachweis der Krankenversicherung"},
+    "admission_or_enrolment": {"en": "Admission letter or enrolment certificate (Immatrikulationsbescheinigung)", "de": "Zulassungsbescheid oder Immatrikulationsbescheinigung"},
+    "biometric_photo": {"en": "Biometric passport photo", "de": "Biometrisches Passfoto"},
+    "proof_of_funds": {"en": "Proof of financial means (e.g. blocked account confirmation or scholarship letter)", "de": "Finanzierungsnachweis (z. B. Sperrkonto-Bestätigung oder Stipendienzusage)"},
+    "application_form": {"en": "Application form of your foreigners' authority", "de": "Antragsformular Ihrer Ausländerbehörde"},
+    "university_documents": {"en": "Documents your university asks for (e.g. certificates, fee payment)", "de": "Unterlagen, die Ihre Hochschule verlangt (z. B. Zeugnisse, Beitragszahlung)"},
+    "previous_card": {"en": "Your previous residence card, if you have one", "de": "Bisheriger eAT, falls vorhanden"},
+    "pin_letter": {"en": "PIN letter for the card's online ID function", "de": "PIN-Brief für die Online-Ausweisfunktion"},
+    "bank_details": {"en": "German bank account details (IBAN)", "de": "Deutsche Bankverbindung (IBAN)"},
+    "tax_id": {"en": "Tax ID (Steuer-ID) letter", "de": "Schreiben mit der Steuer-ID"}
+  },
+  "rules": [
+    {
+      "id": "de.housing.landlord_confirmation",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "housing",
+      "order": 10,
+      "jurisdiction": "DE",
+      "applies_to": {"always": true},
+      "timing": {"type": "after_anchor", "anchor": "move_in_date", "offset_days": 14, "basis": "legal"},
+      "depends_on": [],
+      "required_documents": [],
+      "sources": [{"source_id": "src.bmg.19"}, {"source_id": "src.berlin.anmeldung", "when": {"field": "city", "eq": "berlin"}}],
+      "effective_from": "2015-11-01",
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Wohnungsgeberbestätigung", "Wohnungsgeber"],
+      "content": {
+        "en": {
+          "title": "Get the landlord confirmation for your address",
+          "summary": "Ask whoever gives you the flat or room (landlord, dorm office, main tenant) for a signed move-in confirmation. You need it to register your address.",
+          "why": "German registration law requires the landlord to confirm your move-in, and the registration office asks for this confirmation.",
+          "steps": [
+            "Ask your landlord, dorm administration or main tenant for the 'Wohnungsgeberbestätigung' when you move in.",
+            "Check it shows: landlord name and address, owner (if different), move-in date, the flat's address and your name.",
+            "If you do not get it in time, tell the registration office yourself — do not simply wait."
+          ],
+          "notes": "Hotels and short holiday rentals usually cannot give you this confirmation. Only an address where you actually live can be registered."
+        },
+        "de": {
+          "title": "Wohnungsgeberbestätigung für Ihre Adresse holen",
+          "summary": "Bitten Sie Vermieter, Wohnheimverwaltung oder Hauptmieter um eine unterschriebene Einzugsbestätigung. Sie brauchen sie für die Anmeldung.",
+          "why": "Nach dem Melderecht muss der Wohnungsgeber Ihren Einzug bestätigen; die Meldebehörde verlangt diese Bestätigung.",
+          "steps": [
+            "Beim Einzug die Wohnungsgeberbestätigung beim Vermieter, der Wohnheimverwaltung oder dem Hauptmieter anfordern.",
+            "Prüfen: Name und Anschrift des Wohnungsgebers, ggf. Eigentümer, Einzugsdatum, Anschrift der Wohnung, Ihr Name.",
+            "Wenn Sie die Bestätigung nicht rechtzeitig erhalten, informieren Sie selbst die Meldebehörde."
+          ],
+          "notes": "Hotels und kurze Ferienunterkünfte können diese Bestätigung meist nicht ausstellen. Anmelden können Sie nur eine Wohnung, in der Sie tatsächlich wohnen."
+        }
+      }
+    },
+    {
+      "id": "de.registration.anmeldung",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "registration",
+      "order": 20,
+      "jurisdiction": "DE",
+      "applies_to": {"always": true},
+      "timing": {"type": "after_anchor", "anchor": "move_in_date", "offset_days": 14, "basis": "legal", "suggested_start_days_before": 14},
+      "depends_on": [{"rule_id": "de.housing.landlord_confirmation", "type": "requires", "evidence_source_id": "src.bmg.19"}],
+      "required_documents": [
+        {"doc": "passport", "basis": "official"},
+        {"doc": "landlord_confirmation", "basis": "official"},
+        {"doc": "registration_form", "basis": "official"}
+      ],
+      "sources": [
+        {"source_id": "src.berlin.anmeldung", "when": {"field": "city", "eq": "berlin"}},
+        {"source_id": "src.muenchen.anmeldung", "when": {"field": "city", "eq": "munich"}},
+        {"source_id": "src.bmg.17"},
+        {"source_id": "src.bmi.meldewesen", "when": {"field": "city", "eq": "other"}}
+      ],
+      "effective_from": "2015-11-01",
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Anmeldung", "Bürgeramt", "Meldebescheinigung"],
+      "content": {
+        "en": {
+          "title": "Register your address (Anmeldung)",
+          "summary": "Register your new home at the local registration office within two weeks of moving in. You receive a registration certificate (Meldebescheinigung).",
+          "why": "It is a legal duty. Many later steps — like your tax ID and often your residence permit and bank account — build on it.",
+          "steps": [
+            "Book an appointment at your local registration office (Bürgeramt / Bürgerbüro) as early as possible. Some cities also offer online registration.",
+            "Fill in the registration form (Anmeldeformular).",
+            "Bring your passport and the landlord confirmation.",
+            "Keep the registration certificate (Meldebescheinigung) you receive — you will need it again."
+          ],
+          "notes": "If no appointment is available within two weeks, keep proof that you tried to book and ask your city's office how to proceed."
+        },
+        "de": {
+          "title": "Wohnsitz anmelden (Anmeldung)",
+          "summary": "Melden Sie Ihre neue Wohnung innerhalb von zwei Wochen nach dem Einzug bei der Meldebehörde an. Sie erhalten eine Meldebescheinigung.",
+          "why": "Die Anmeldung ist gesetzlich vorgeschrieben. Viele spätere Schritte bauen darauf auf – z. B. die Steuer-ID und oft auch Aufenthaltstitel und Bankkonto.",
+          "steps": [
+            "So früh wie möglich einen Termin beim Bürgeramt / Bürgerbüro buchen. Manche Städte bieten auch eine Online-Anmeldung an.",
+            "Anmeldeformular ausfüllen.",
+            "Reisepass und Wohnungsgeberbestätigung mitbringen.",
+            "Die Meldebescheinigung gut aufbewahren – Sie brauchen sie wieder."
+          ],
+          "notes": "Wenn innerhalb von zwei Wochen kein Termin frei ist, bewahren Sie Nachweise Ihrer Buchungsversuche auf und fragen Sie bei Ihrer Stadt nach dem weiteren Vorgehen."
+        }
+      }
+    },
+    {
+      "id": "de.residence.find_authority",
+      "version": 1,
+      "status": "active",
+      "kind": "information",
+      "category": "residence",
+      "order": 25,
+      "jurisdiction": "DE",
+      "applies_to": {"all": [{"field": "city", "eq": "other"}, {"field": "entry_type", "in": ["national_visa", "visa_free"]}]},
+      "timing": {"type": "asap"},
+      "depends_on": [],
+      "required_documents": [],
+      "sources": [{"source_id": "src.bamf.navi"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Ausländerbehörde"],
+      "content": {
+        "en": {
+          "title": "Find your foreigners' authority",
+          "summary": "Look up which foreigners' authority (Ausländerbehörde) is responsible for your address, and how it takes applications.",
+          "why": "Responsibility depends on where you live. Procedures (online form, email, appointment) differ between authorities.",
+          "steps": [
+            "Open the official BAMF-NAvI search and enter your postcode or town.",
+            "Open your authority's own website and look for 'Studium' / 'study' residence permits.",
+            "Note how to apply (online, by email, by appointment) and which documents they list."
+          ],
+          "notes": "Your university's international office usually knows the local procedure too."
+        },
+        "de": {
+          "title": "Zuständige Ausländerbehörde finden",
+          "summary": "Finden Sie heraus, welche Ausländerbehörde für Ihre Adresse zuständig ist und wie dort Anträge gestellt werden.",
+          "why": "Die Zuständigkeit richtet sich nach dem Wohnort. Die Verfahren (Online-Formular, E-Mail, Termin) unterscheiden sich.",
+          "steps": [
+            "Die offizielle Suche BAMF-NAvI öffnen und Postleitzahl oder Ort eingeben.",
+            "Die Website Ihrer Behörde öffnen und nach Aufenthaltserlaubnis 'Studium' suchen.",
+            "Notieren, wie der Antrag gestellt wird und welche Unterlagen verlangt werden."
+          ],
+          "notes": "Auch das International Office Ihrer Hochschule kennt meist das örtliche Verfahren."
+        }
+      }
+    },
+    {
+      "id": "de.insurance.health_insurance",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "insurance",
+      "order": 30,
+      "jurisdiction": "DE",
+      "applies_to": {"field": "entry_type", "in": ["national_visa", "visa_free"]},
+      "timing": {"type": "asap"},
+      "depends_on": [],
+      "required_documents": [{"doc": "passport", "basis": "commonly_requested"}, {"doc": "admission_or_enrolment", "basis": "commonly_requested"}],
+      "sources": [{"source_id": "src.daad.health_insurance"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Krankenversicherung", "gesetzliche Krankenversicherung (GKV)", "Versicherungsbescheinigung"],
+      "content": {
+        "en": {
+          "title": "Sort out health insurance for your studies",
+          "summary": "Choose a German health insurer (or get your existing cover recognised) and make sure your university receives proof of insurance.",
+          "why": "You need proof of health insurance to enrol at university and for your residence permit.",
+          "steps": [
+            "Decide: statutory (public) student insurance, or an exemption to use other cover. The official page explains the difference.",
+            "If you choose statutory insurance, sign up with an insurer of your choice and ask them to send the insurance notification to your university.",
+            "If you want to keep other cover, you need an exemption certificate from a German statutory insurer — this choice is hard to reverse, so read the rules first.",
+            "Keep the insurer's confirmation letter; the foreigners' authority may ask for it."
+          ],
+          "notes": "Travel insurance bought for the visa usually only covers the first weeks. This app does not recommend specific insurers."
+        },
+        "de": {
+          "title": "Krankenversicherung für das Studium klären",
+          "summary": "Wählen Sie eine deutsche Krankenkasse (oder lassen Sie Ihren bestehenden Schutz anerkennen) und sorgen Sie dafür, dass Ihre Hochschule den Nachweis erhält.",
+          "why": "Der Nachweis einer Krankenversicherung ist für die Einschreibung und für die Aufenthaltserlaubnis nötig.",
+          "steps": [
+            "Entscheiden: gesetzliche Krankenversicherung für Studierende oder Befreiung, um andere Versicherung zu nutzen. Die offizielle Seite erklärt den Unterschied.",
+            "Bei gesetzlicher Versicherung: bei einer Krankenkasse Ihrer Wahl anmelden und die Versicherungsmeldung an Ihre Hochschule veranlassen.",
+            "Für andere Versicherungen brauchen Sie eine Befreiungsbescheinigung einer gesetzlichen Kasse – diese Entscheidung ist schwer rückgängig zu machen.",
+            "Das Bestätigungsschreiben der Versicherung aufbewahren; die Ausländerbehörde kann es verlangen."
+          ],
+          "notes": "Eine Reiseversicherung für das Visum gilt meist nur für die ersten Wochen. Diese App empfiehlt keine bestimmten Versicherer."
+        }
+      }
+    },
+    {
+      "id": "de.insurance.over_30",
+      "version": 1,
+      "status": "active",
+      "kind": "information",
+      "category": "insurance",
+      "order": 32,
+      "jurisdiction": "DE",
+      "applies_to": {"all": [{"field": "age_30_plus", "eq": true}, {"field": "entry_type", "in": ["national_visa", "visa_free"]}]},
+      "timing": {"type": "asap"},
+      "depends_on": [],
+      "required_documents": [],
+      "sources": [{"source_id": "src.daad.health_insurance"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "medium",
+      "official_terms": ["Krankenversicherung der Studenten (KVdS)"],
+      "content": {
+        "en": {
+          "title": "Check insurance rules for students aged 30 or older",
+          "summary": "Student rates in statutory health insurance generally apply only up to age 30. If you are 30 or older, your options and costs are different.",
+          "why": "Choosing the wrong type of insurance can be expensive and hard to change later.",
+          "steps": [
+            "Read the age-related section on the official DAAD health insurance page.",
+            "Ask a statutory insurer and your university's international office which options apply to you.",
+            "Decide before enrolment, because you need proof of insurance to enrol."
+          ],
+          "notes": "This is a situation where individual advice from an insurer or counselling service is worth getting."
+        },
+        "de": {
+          "title": "Versicherungsregeln ab 30 Jahren prüfen",
+          "summary": "Studierendentarife der gesetzlichen Krankenversicherung gelten grundsätzlich nur bis zum 30. Lebensjahr. Ab 30 gelten andere Optionen und Kosten.",
+          "why": "Die falsche Versicherungsart kann teuer werden und ist später schwer zu ändern.",
+          "steps": [
+            "Den Abschnitt zum Alter auf der offiziellen DAAD-Seite zur Krankenversicherung lesen.",
+            "Bei einer gesetzlichen Krankenkasse und dem International Office fragen, welche Optionen für Sie gelten.",
+            "Vor der Einschreibung entscheiden, da der Versicherungsnachweis dafür nötig ist."
+          ],
+          "notes": "Hier lohnt sich eine individuelle Beratung durch eine Krankenkasse oder Beratungsstelle."
+        }
+      },
+      "professional_help": {
+        "en": "Your situation depends on your age, previous insurance and study plans. Ask a statutory health insurer or your university's counselling service.",
+        "de": "Ihre Situation hängt von Alter, Vorversicherung und Studienplänen ab. Fragen Sie eine gesetzliche Krankenkasse oder die Beratung Ihrer Hochschule."
+      }
+    },
+    {
+      "id": "de.money.bank_account",
+      "version": 1,
+      "status": "active",
+      "kind": "practical",
+      "category": "money",
+      "order": 35,
+      "jurisdiction": "DE",
+      "applies_to": {"field": "entry_type", "in": ["national_visa", "visa_free"]},
+      "timing": {"type": "asap"},
+      "depends_on": [],
+      "required_documents": [{"doc": "passport", "basis": "commonly_requested"}, {"doc": "registration_certificate", "basis": "commonly_requested"}],
+      "sources": [{"source_id": "src.aa.sperrkonto"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "medium",
+      "official_terms": ["Girokonto", "Sperrkonto"],
+      "content": {
+        "en": {
+          "title": "Open a current account and set up blocked-account payouts",
+          "summary": "Open a German current account (Girokonto) so you can pay rent and insurance and, if you have a blocked account, receive the monthly payout.",
+          "why": "Rent, insurance and the broadcasting fee are usually paid by bank transfer or direct debit. A blocked account pays out a fixed monthly amount to a current account.",
+          "steps": [
+            "Compare banks yourself. Some banks ask for your registration certificate, others do not.",
+            "If you have a blocked account, follow your blocked-account provider's instructions to connect your new current account.",
+            "Save your IBAN — your insurer and landlord will ask for it."
+          ],
+          "notes": "This is a practical step, not a legal requirement. The official link explains blocked accounts; this app has no partnerships with banks."
+        },
+        "de": {
+          "title": "Girokonto eröffnen und Sperrkonto-Auszahlung einrichten",
+          "summary": "Eröffnen Sie ein deutsches Girokonto, um Miete und Versicherung zu zahlen und – falls Sie ein Sperrkonto haben – die monatliche Auszahlung zu erhalten.",
+          "why": "Miete, Versicherung und Rundfunkbeitrag werden meist per Überweisung oder Lastschrift gezahlt. Ein Sperrkonto zahlt monatlich einen festen Betrag auf ein Girokonto aus.",
+          "steps": [
+            "Banken selbst vergleichen. Manche verlangen eine Meldebescheinigung, andere nicht.",
+            "Bei einem Sperrkonto: nach den Anweisungen Ihres Anbieters das neue Girokonto hinterlegen.",
+            "IBAN notieren – Krankenkasse und Vermieter fragen danach."
+          ],
+          "notes": "Dies ist ein praktischer Schritt, keine gesetzliche Pflicht. Der offizielle Link erklärt Sperrkonten; diese App hat keine Partnerschaften mit Banken."
+        }
+      }
+    },
+    {
+      "id": "de.university.enrolment",
+      "version": 1,
+      "status": "active",
+      "kind": "official_process",
+      "category": "university",
+      "order": 40,
+      "jurisdiction": "DE",
+      "applies_to": {"always": true},
+      "timing": {"type": "asap"},
+      "depends_on": [{"rule_id": "de.insurance.health_insurance", "type": "requires", "evidence_source_id": "src.daad.health_insurance"}],
+      "required_documents": [
+        {"doc": "passport", "basis": "commonly_requested"},
+        {"doc": "health_insurance_proof", "basis": "official"},
+        {"doc": "university_documents", "basis": "commonly_requested"}
+      ],
+      "sources": [{"source_id": "src.daad.enrolment"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Immatrikulation", "Einschreibung", "Immatrikulationsbescheinigung", "Semesterbeitrag"],
+      "content": {
+        "en": {
+          "title": "Complete your university enrolment",
+          "summary": "Finish enrolment (Immatrikulation) with your university and download your enrolment certificate.",
+          "why": "Enrolment makes you a student officially. The enrolment certificate is needed for the residence permit and many student services.",
+          "steps": [
+            "Follow your university's enrolment instructions and deadlines — each university has its own.",
+            "Make sure your health insurer has sent proof of insurance to the university.",
+            "Pay the semester contribution if your university requires it.",
+            "Download or collect your enrolment certificate (Immatrikulationsbescheinigung)."
+          ],
+          "notes": "Your university's admission letter is the authoritative source for its own deadlines. With enrolment you are also covered by statutory accident insurance at the university."
+        },
+        "de": {
+          "title": "Einschreibung an der Hochschule abschließen",
+          "summary": "Schließen Sie die Immatrikulation ab und laden Sie Ihre Immatrikulationsbescheinigung herunter.",
+          "why": "Mit der Einschreibung sind Sie offiziell Studierende/r. Die Bescheinigung brauchen Sie für die Aufenthaltserlaubnis und viele Studierendendienste.",
+          "steps": [
+            "Den Anweisungen und Fristen Ihrer Hochschule folgen – jede Hochschule hat eigene.",
+            "Sicherstellen, dass Ihre Krankenkasse den Versicherungsnachweis an die Hochschule geschickt hat.",
+            "Den Semesterbeitrag zahlen, falls verlangt.",
+            "Immatrikulationsbescheinigung herunterladen oder abholen."
+          ],
+          "notes": "Für Fristen Ihrer Hochschule ist Ihr Zulassungsbescheid maßgeblich. Mit der Einschreibung sind Sie an der Hochschule gesetzlich unfallversichert."
+        }
+      }
+    },
+    {
+      "id": "de.broadcast.rundfunkbeitrag",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "housing",
+      "order": 45,
+      "jurisdiction": "DE",
+      "applies_to": {"always": true},
+      "timing": {"type": "after_anchor", "anchor": "move_in_date", "offset_days": 14, "basis": "app_suggestion"},
+      "depends_on": [],
+      "required_documents": [{"doc": "bank_details", "basis": "commonly_requested"}],
+      "sources": [{"source_id": "src.rundfunkbeitrag.students"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Rundfunkbeitrag", "Beitragsnummer", "Wohngemeinschaft (WG)"],
+      "content": {
+        "en": {
+          "title": "Sort out the broadcasting fee for your home",
+          "summary": "Every home in Germany pays one broadcasting fee (Rundfunkbeitrag). Check whether someone in your home already pays; if not, register.",
+          "why": "The fee is charged per home, not per person or device. Letters about it often surprise newcomers.",
+          "steps": [
+            "Ask your flatmates or dorm: does someone already pay for this home? If yes, note their contribution number (Beitragsnummer).",
+            "If nobody pays, one person registers the home on the official Rundfunkbeitrag website.",
+            "Agree with flatmates how you share the cost.",
+            "If you receive a letter, answer it with the contribution number of the person who pays."
+          ],
+          "notes": "The amount can change; see the official website. An exemption for BAföG recipients does not cover flatmates."
+        },
+        "de": {
+          "title": "Rundfunkbeitrag für Ihre Wohnung klären",
+          "summary": "Jede Wohnung zahlt einen Rundfunkbeitrag. Prüfen Sie, ob schon jemand in Ihrer Wohnung zahlt; wenn nicht, melden Sie die Wohnung an.",
+          "why": "Der Beitrag gilt pro Wohnung, nicht pro Person oder Gerät. Schreiben dazu überraschen viele Neuankömmlinge.",
+          "steps": [
+            "Mitbewohner oder Wohnheim fragen: Zahlt schon jemand für diese Wohnung? Wenn ja, Beitragsnummer notieren.",
+            "Wenn niemand zahlt, meldet eine Person die Wohnung auf der offiziellen Website an.",
+            "Mit Mitbewohnern die Kostenteilung vereinbaren.",
+            "Auf Schreiben mit der Beitragsnummer der zahlenden Person antworten."
+          ],
+          "notes": "Der Betrag kann sich ändern; siehe offizielle Website. Eine Befreiung wegen BAföG gilt nicht für Mitbewohner."
+        }
+      }
+    },
+    {
+      "id": "de.residence.permit_application",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "residence",
+      "order": 50,
+      "jurisdiction": "DE",
+      "applies_to": {"field": "entry_type", "eq": "national_visa"},
+      "timing": {"type": "before_anchor", "anchor": "visa_expiry_date", "offset_days": -1, "basis": "legal", "suggested_start_days_before": 56},
+      "depends_on": [
+        {"rule_id": "de.insurance.health_insurance", "type": "requires", "evidence_source_id": "src.daad.health_insurance"},
+        {"rule_id": "de.registration.anmeldung", "type": "recommended_after"}
+      ],
+      "required_documents": [
+        {"doc": "passport", "basis": "official"},
+        {"doc": "admission_or_enrolment", "basis": "official"},
+        {"doc": "health_insurance_proof", "basis": "official"},
+        {"doc": "application_form", "basis": "official"},
+        {"doc": "biometric_photo", "basis": "commonly_requested"},
+        {"doc": "proof_of_funds", "basis": "commonly_requested"},
+        {"doc": "registration_certificate", "basis": "commonly_requested"}
+      ],
+      "sources": [
+        {"source_id": "src.berlin.study_permit", "when": {"field": "city", "eq": "berlin"}},
+        {"source_id": "src.muenchen.study_permit", "when": {"all": [{"field": "city", "eq": "munich"}, {"field": "study_stage", "eq": "degree"}]}},
+        {"source_id": "src.muenchen.prep_permit", "when": {"all": [{"field": "city", "eq": "munich"}, {"field": "study_stage", "eq": "preparatory"}]}},
+        {"source_id": "src.bamf.navi", "when": {"field": "city", "eq": "other"}},
+        {"source_id": "src.aufenthg.81"},
+        {"source_id": "src.aufenthg.16b"}
+      ],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Aufenthaltserlaubnis zum Studium", "Ausländerbehörde", "§ 16b AufenthG"],
+      "content": {
+        "en": {
+          "title": "Apply for your student residence permit",
+          "summary": "Your national visa is temporary. Apply to your local foreigners' authority for a residence permit for studies before your visa ends.",
+          "why": "If you apply before your visa expires, your stay generally remains lawful while the authority decides. Applying late can create serious problems.",
+          "steps": [
+            "Check the end date printed on your visa.",
+            "Open your authority's official page (linked below) and follow its application route — online form, email or appointment.",
+            "Start early: appointments can take weeks. Submit the application even if you are still waiting for an appointment date, if your authority allows it.",
+            "Prepare the documents your authority lists. The list in this app is a guide, not the official list.",
+            "Keep proof that you applied (confirmation email, receipt)."
+          ],
+          "notes": "If your visa will end before the authority decides, see the task about the fictional certificate (Fiktionsbescheinigung)."
+        },
+        "de": {
+          "title": "Aufenthaltserlaubnis zum Studium beantragen",
+          "summary": "Ihr nationales Visum ist befristet. Beantragen Sie vor Ablauf des Visums bei Ihrer Ausländerbehörde eine Aufenthaltserlaubnis zum Studium.",
+          "why": "Wenn Sie vor Ablauf des Visums beantragen, bleibt Ihr Aufenthalt in der Regel rechtmäßig, bis die Behörde entscheidet. Ein verspäteter Antrag kann ernste Probleme verursachen.",
+          "steps": [
+            "Das Ablaufdatum auf Ihrem Visum prüfen.",
+            "Die offizielle Seite Ihrer Behörde (unten verlinkt) öffnen und dem Antragsweg folgen – Online-Formular, E-Mail oder Termin.",
+            "Früh anfangen: Termine können Wochen dauern. Den Antrag bereits stellen, auch wenn noch kein Termin feststeht, sofern Ihre Behörde das zulässt.",
+            "Die von Ihrer Behörde genannten Unterlagen vorbereiten. Die Liste in dieser App ist eine Orientierung, nicht die offizielle Liste.",
+            "Nachweis der Antragstellung aufbewahren (Bestätigungs-E-Mail, Quittung)."
+          ],
+          "notes": "Wenn Ihr Visum vor der Entscheidung abläuft, siehe die Aufgabe zur Fiktionsbescheinigung."
+        }
+      },
+      "professional_help": {
+        "en": "If your visa has already expired, your application was refused, or your situation is unusual (change of study programme, long gaps, previous refusals), contact the authority directly or a qualified migration counselling service or lawyer.",
+        "de": "Wenn Ihr Visum bereits abgelaufen ist, Ihr Antrag abgelehnt wurde oder Ihre Situation besonders ist (Studiengangwechsel, lange Unterbrechungen, frühere Ablehnungen), wenden Sie sich direkt an die Behörde, an eine Migrationsberatung oder an eine Anwältin / einen Anwalt."
+      }
+    },
+    {
+      "id": "de.residence.permit_application_visa_free",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "residence",
+      "order": 51,
+      "jurisdiction": "DE",
+      "applies_to": {"field": "entry_type", "eq": "visa_free"},
+      "timing": {"type": "after_anchor", "anchor": "arrival_date", "offset_months": 3, "basis": "legal", "suggested_start_days_before": 56},
+      "depends_on": [
+        {"rule_id": "de.insurance.health_insurance", "type": "requires", "evidence_source_id": "src.daad.health_insurance"},
+        {"rule_id": "de.registration.anmeldung", "type": "recommended_after"}
+      ],
+      "required_documents": [
+        {"doc": "passport", "basis": "official"},
+        {"doc": "admission_or_enrolment", "basis": "official"},
+        {"doc": "health_insurance_proof", "basis": "official"},
+        {"doc": "application_form", "basis": "official"},
+        {"doc": "biometric_photo", "basis": "commonly_requested"},
+        {"doc": "proof_of_funds", "basis": "commonly_requested"},
+        {"doc": "registration_certificate", "basis": "commonly_requested"}
+      ],
+      "sources": [
+        {"source_id": "src.berlin.study_permit", "when": {"field": "city", "eq": "berlin"}},
+        {"source_id": "src.muenchen.study_permit", "when": {"all": [{"field": "city", "eq": "munich"}, {"field": "study_stage", "eq": "degree"}]}},
+        {"source_id": "src.muenchen.prep_permit", "when": {"all": [{"field": "city", "eq": "munich"}, {"field": "study_stage", "eq": "preparatory"}]}},
+        {"source_id": "src.bamf.navi", "when": {"field": "city", "eq": "other"}},
+        {"source_id": "src.aufenthv.41"}
+      ],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Aufenthaltserlaubnis zum Studium", "§ 41 AufenthV"],
+      "content": {
+        "en": {
+          "title": "Apply for your student residence permit (visa-free entry)",
+          "summary": "Nationals of certain countries (for example the USA, Canada, Japan) may enter without a visa, but must apply for a residence permit within three months of entry.",
+          "why": "The visa-free period does not cover a long stay for studies. The application must be made inside the three-month window.",
+          "steps": [
+            "Confirm on the official source that your nationality is on the list.",
+            "Open your authority's official page and follow its application route.",
+            "Apply early, and keep proof that you applied."
+          ],
+          "notes": "If you were in the Schengen area shortly before this trip, your allowed time may be shorter. Check with the authority."
+        },
+        "de": {
+          "title": "Aufenthaltserlaubnis zum Studium beantragen (visumfreie Einreise)",
+          "summary": "Staatsangehörige bestimmter Länder (z. B. USA, Kanada, Japan) dürfen visumfrei einreisen, müssen aber innerhalb von drei Monaten nach Einreise eine Aufenthaltserlaubnis beantragen.",
+          "why": "Der visumfreie Aufenthalt deckt kein längeres Studium ab. Der Antrag muss innerhalb der drei Monate gestellt werden.",
+          "steps": [
+            "In der offiziellen Quelle prüfen, ob Ihre Staatsangehörigkeit auf der Liste steht.",
+            "Die offizielle Seite Ihrer Behörde öffnen und dem Antragsweg folgen.",
+            "Früh beantragen und Nachweis der Antragstellung aufbewahren."
+          ],
+          "notes": "Wenn Sie kurz vor dieser Reise im Schengen-Raum waren, kann Ihre erlaubte Zeit kürzer sein. Fragen Sie die Behörde."
+        }
+      },
+      "professional_help": {
+        "en": "If more than three months have passed since entry, contact the authority or a migration counselling service immediately.",
+        "de": "Wenn seit der Einreise mehr als drei Monate vergangen sind, wenden Sie sich sofort an die Behörde oder eine Migrationsberatung."
+      }
+    },
+    {
+      "id": "de.residence.fiktionsbescheinigung",
+      "version": 1,
+      "status": "active",
+      "kind": "information",
+      "category": "residence",
+      "order": 55,
+      "jurisdiction": "DE",
+      "applies_to": {"field": "entry_type", "eq": "national_visa"},
+      "timing": {"type": "none"},
+      "depends_on": [{"rule_id": "de.residence.permit_application", "type": "requires", "evidence_source_id": "src.aufenthg.81"}],
+      "required_documents": [],
+      "sources": [{"source_id": "src.berlin.fiktion", "when": {"field": "city", "eq": "berlin"}}, {"source_id": "src.aufenthg.81"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Fiktionsbescheinigung", "Fiktionswirkung"],
+      "content": {
+        "en": {
+          "title": "If your visa ends before a decision: fictional certificate",
+          "summary": "If you applied in time but the authority has not decided before your visa ends, you can get a certificate (Fiktionsbescheinigung) confirming that your stay continues to be treated as lawful.",
+          "why": "It proves your status, for example to employers, landlords or when travelling. Travel rules with this certificate are limited — check before leaving Germany.",
+          "steps": [
+            "Check whether your authority issues the certificate automatically or on request.",
+            "Request it before your visa ends if you have not had a decision.",
+            "Carry it together with your passport."
+          ],
+          "notes": "This protection applies when the application was made before the visa expired. It does not apply to Schengen (short-stay) visas."
+        },
+        "de": {
+          "title": "Wenn das Visum vor der Entscheidung abläuft: Fiktionsbescheinigung",
+          "summary": "Wenn Sie rechtzeitig beantragt haben, die Behörde aber vor Ablauf des Visums nicht entschieden hat, erhalten Sie eine Fiktionsbescheinigung, die Ihren weiteren Aufenthalt bestätigt.",
+          "why": "Sie belegt Ihren Status, z. B. gegenüber Arbeitgebern, Vermietern oder bei Reisen. Reisen mit dieser Bescheinigung ist eingeschränkt – vorher prüfen.",
+          "steps": [
+            "Prüfen, ob Ihre Behörde die Bescheinigung automatisch oder auf Antrag ausstellt.",
+            "Vor Ablauf des Visums anfordern, wenn noch keine Entscheidung vorliegt.",
+            "Zusammen mit dem Reisepass mitführen."
+          ],
+          "notes": "Dieser Schutz gilt, wenn der Antrag vor Ablauf des Visums gestellt wurde. Er gilt nicht für Schengen-Visa."
+        }
+      },
+      "professional_help": {
+        "en": "If you plan to travel outside Germany while holding only a fictional certificate, ask the authority first.",
+        "de": "Wenn Sie mit einer Fiktionsbescheinigung ins Ausland reisen möchten, fragen Sie vorher die Behörde."
+      }
+    },
+    {
+      "id": "de.tax.tax_id_letter",
+      "version": 1,
+      "status": "active",
+      "kind": "official_process",
+      "category": "tax",
+      "order": 60,
+      "jurisdiction": "DE",
+      "applies_to": {"always": true},
+      "timing": {"type": "after_anchor", "anchor": "completed:de.registration.anmeldung", "offset_days": 90, "basis": "official_guidance"},
+      "depends_on": [{"rule_id": "de.registration.anmeldung", "type": "requires", "evidence_source_id": "src.bzst.idnr"}],
+      "required_documents": [],
+      "sources": [{"source_id": "src.bzst.idnr"}, {"source_id": "src.bzst.idnr_faq"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Steuerliche Identifikationsnummer (Steuer-ID, IdNr)", "Bundeszentralamt für Steuern (BZSt)"],
+      "content": {
+        "en": {
+          "title": "Watch for your tax ID letter",
+          "summary": "After you register your address, the Federal Central Tax Office sends your tax ID (Steuer-ID) by post automatically. You do not need to apply.",
+          "why": "Employers need your tax ID; without it, more tax can be withheld from your wages.",
+          "steps": [
+            "Make sure your name is on your letterbox so post reaches you.",
+            "Keep the letter safe — the number stays the same for life.",
+            "If nothing has arrived three months after registration, contact the BZSt as described on the official page."
+          ],
+          "notes": "The due date shown is when to follow up if the letter has not arrived, not a deadline for you."
+        },
+        "de": {
+          "title": "Auf den Brief mit der Steuer-ID achten",
+          "summary": "Nach der Anmeldung schickt Ihnen das Bundeszentralamt für Steuern Ihre Steuer-ID automatisch per Post. Ein Antrag ist nicht nötig.",
+          "why": "Arbeitgeber brauchen Ihre Steuer-ID; ohne sie kann mehr Steuer einbehalten werden.",
+          "steps": [
+            "Namen am Briefkasten anbringen, damit Post ankommt.",
+            "Den Brief gut aufbewahren – die Nummer gilt lebenslang.",
+            "Wenn drei Monate nach der Anmeldung nichts angekommen ist, wie auf der offiziellen Seite beschrieben beim BZSt melden."
+          ],
+          "notes": "Das angezeigte Datum ist der Zeitpunkt zum Nachfragen, falls der Brief fehlt – keine Frist für Sie."
+        }
+      }
+    },
+    {
+      "id": "de.residence.collect_card",
+      "version": 1,
+      "status": "active",
+      "kind": "official_process",
+      "category": "residence",
+      "order": 65,
+      "jurisdiction": "DE",
+      "applies_to": {"field": "entry_type", "in": ["national_visa", "visa_free"]},
+      "timing": {"type": "none"},
+      "depends_on": [{"rule_id": "de.residence.permit_application", "type": "requires", "evidence_source_id": "src.berlin.eat"}, {"rule_id": "de.residence.permit_application_visa_free", "type": "requires", "evidence_source_id": "src.berlin.eat"}],
+      "required_documents": [{"doc": "passport", "basis": "official"}, {"doc": "previous_card", "basis": "official"}, {"doc": "pin_letter", "basis": "commonly_requested"}],
+      "sources": [{"source_id": "src.berlin.eat", "when": {"field": "city", "eq": "berlin"}}, {"source_id": "src.personalausweisportal.eat"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "medium",
+      "official_terms": ["elektronischer Aufenthaltstitel (eAT)", "PIN-Brief"],
+      "content": {
+        "en": {
+          "title": "Collect your residence permit card",
+          "summary": "Once approved, the residence permit is issued as a card (eAT). It is produced centrally and collected later from the authority that ordered it.",
+          "why": "The card is your proof of residence status. Check that the details and expiry date are correct.",
+          "steps": [
+            "Keep the PIN letter you receive when the card is ordered — you need it for the card's online ID function.",
+            "Collect the card when the authority tells you it is ready (in Berlin usually about 4–5 weeks after ordering).",
+            "Check your name, dates and the notes on employment.",
+            "Add the card's expiry date in this app so it can remind you before renewal."
+          ],
+          "notes": "In Berlin, an authorised person aged 14 or over can collect the card for you. Other cities may differ."
+        },
+        "de": {
+          "title": "Aufenthaltstitel-Karte abholen",
+          "summary": "Nach der Bewilligung wird der Aufenthaltstitel als Karte (eAT) ausgestellt. Sie wird zentral hergestellt und später bei der bestellenden Behörde abgeholt.",
+          "why": "Die Karte ist Ihr Nachweis des Aufenthaltsstatus. Prüfen Sie Angaben und Ablaufdatum.",
+          "steps": [
+            "Den PIN-Brief aufbewahren, den Sie bei der Bestellung erhalten – er wird für die Online-Ausweisfunktion benötigt.",
+            "Die Karte abholen, sobald die Behörde Bescheid gibt (in Berlin meist ca. 4–5 Wochen nach Bestellung).",
+            "Name, Daten und Nebenbestimmungen zur Erwerbstätigkeit prüfen.",
+            "Das Ablaufdatum der Karte in dieser App eintragen, damit sie rechtzeitig an die Verlängerung erinnert."
+          ],
+          "notes": "In Berlin kann eine bevollmächtigte Person ab 14 Jahren die Karte abholen. In anderen Städten kann das abweichen."
+        }
+      }
+    },
+    {
+      "id": "de.work.limits",
+      "version": 2,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "work",
+      "order": 70,
+      "jurisdiction": "DE",
+      "applies_to": {"all": [{"field": "plans_to_work", "eq": true}, {"field": "entry_type", "in": ["national_visa", "visa_free"]}]},
+      "timing": {"type": "none"},
+      "depends_on": [],
+      "required_documents": [],
+      "sources": [{"source_id": "src.aufenthg.16b"}, {"source_id": "src.mig.study_work"}],
+      "effective_from": "2024-03-01",
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["140 ganze / 280 halbe Tage", "studentische Nebentätigkeit"],
+      "content": {
+        "en": {
+          "title": "Know your work limits as a student",
+          "summary": "With a residence permit for studies you may work 140 full days or 280 half days per calendar year. Student assistant jobs at the university are not counted.",
+          "why": "Working more than allowed can put your residence permit at risk.",
+          "steps": [
+            "Read the notes on employment on your visa or residence card.",
+            "Keep your own record of the days you work.",
+            "Before taking a job, check with the official source or the authority if you are unsure whether it counts."
+          ],
+          "notes": "Self-employment and freelance work follow different rules — ask the authority before starting."
+        },
+        "de": {
+          "title": "Arbeitsgrenzen für Studierende kennen",
+          "summary": "Mit einer Aufenthaltserlaubnis zum Studium dürfen Sie 140 ganze oder 280 halbe Tage pro Kalenderjahr arbeiten. Studentische Nebentätigkeiten an der Hochschule zählen nicht.",
+          "why": "Wer mehr arbeitet als erlaubt, gefährdet die Aufenthaltserlaubnis.",
+          "steps": [
+            "Die Nebenbestimmungen zur Erwerbstätigkeit auf Visum oder Karte lesen.",
+            "Die gearbeiteten Tage selbst notieren.",
+            "Vor Annahme eines Jobs im Zweifel die offizielle Quelle oder die Behörde fragen."
+          ],
+          "notes": "Selbstständige und freiberufliche Tätigkeiten unterliegen anderen Regeln – vorher die Behörde fragen."
+        }
+      },
+      "professional_help": {
+        "en": "Freelancing, self-employment or several jobs at once: ask the foreigners' authority before you start.",
+        "de": "Freiberufliche oder selbstständige Tätigkeit oder mehrere Jobs: vorher die Ausländerbehörde fragen."
+      }
+    },
+    {
+      "id": "de.work.social_insurance_number",
+      "version": 1,
+      "status": "active",
+      "kind": "official_process",
+      "category": "work",
+      "order": 72,
+      "jurisdiction": "DE",
+      "applies_to": {"field": "plans_to_work", "eq": true},
+      "timing": {"type": "none"},
+      "depends_on": [],
+      "required_documents": [{"doc": "tax_id", "basis": "commonly_requested"}, {"doc": "bank_details", "basis": "commonly_requested"}, {"doc": "health_insurance_proof", "basis": "commonly_requested"}],
+      "sources": [{"source_id": "src.drv.svnr"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Sozialversicherungsnummer", "Versicherungsnummernachweis"],
+      "content": {
+        "en": {
+          "title": "Your social insurance number when you start a job",
+          "summary": "When your first employer registers you, the pension insurance sends your social insurance number by post. You usually do not need to apply yourself.",
+          "why": "Employers need it for payroll. It is issued once and stays the same for life.",
+          "steps": [
+            "Give your employer your tax ID, bank details and health insurance details.",
+            "Watch for the letter with your social insurance number.",
+            "If it does not arrive, request it free of charge from the Deutsche Rentenversicherung or your health insurer."
+          ],
+          "notes": "Mark this done when you have your number."
+        },
+        "de": {
+          "title": "Sozialversicherungsnummer beim ersten Job",
+          "summary": "Wenn Ihr erster Arbeitgeber Sie anmeldet, schickt die Rentenversicherung Ihre Sozialversicherungsnummer per Post. Ein eigener Antrag ist meist nicht nötig.",
+          "why": "Arbeitgeber brauchen sie für die Lohnabrechnung. Sie wird einmal vergeben und gilt lebenslang.",
+          "steps": [
+            "Dem Arbeitgeber Steuer-ID, Bankverbindung und Krankenkasse mitteilen.",
+            "Auf den Brief mit der Sozialversicherungsnummer achten.",
+            "Falls er nicht kommt: kostenlos bei der Deutschen Rentenversicherung oder der Krankenkasse anfordern."
+          ],
+          "notes": "Als erledigt markieren, sobald Sie die Nummer haben."
+        }
+      }
+    },
+    {
+      "id": "de.family.dependants",
+      "version": 1,
+      "status": "active",
+      "kind": "information",
+      "category": "family",
+      "order": 80,
+      "jurisdiction": "DE",
+      "applies_to": {"all": [{"field": "family_joining", "eq": true}, {"field": "entry_type", "in": ["national_visa", "visa_free"]}]},
+      "timing": {"type": "asap"},
+      "depends_on": [],
+      "required_documents": [],
+      "sources": [{"source_id": "src.berlin.family", "when": {"field": "city", "eq": "berlin"}}, {"source_id": "src.bamf.navi"}],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "medium",
+      "official_terms": ["Familiennachzug"],
+      "content": {
+        "en": {
+          "title": "Family members need their own residence permits",
+          "summary": "A spouse or children coming with you need their own visas and residence permits. The requirements are individual.",
+          "why": "Family residence rules depend on your permit, income, housing and more. This app does not assess them.",
+          "steps": [
+            "Register every family member at your address.",
+            "Open the official page for family members and check what your authority requires.",
+            "Get individual advice before making plans that depend on the outcome."
+          ],
+          "notes": "Each family member may also need their own health insurance."
+        },
+        "de": {
+          "title": "Familienangehörige brauchen eigene Aufenthaltstitel",
+          "summary": "Ehepartner oder Kinder, die mitkommen, brauchen eigene Visa und Aufenthaltstitel. Die Voraussetzungen sind individuell.",
+          "why": "Die Regeln hängen von Ihrem Titel, Einkommen, Wohnraum u. a. ab. Diese App prüft sie nicht.",
+          "steps": [
+            "Alle Familienangehörigen unter Ihrer Adresse anmelden.",
+            "Die offizielle Seite für Familienangehörige öffnen und die Anforderungen Ihrer Behörde prüfen.",
+            "Individuelle Beratung einholen, bevor Sie Pläne davon abhängig machen."
+          ],
+          "notes": "Jedes Familienmitglied braucht ggf. eine eigene Krankenversicherung."
+        }
+      },
+      "professional_help": {
+        "en": "Family reunification is individual. Ask the foreigners' authority, a migration counselling service or a lawyer.",
+        "de": "Familiennachzug ist eine Einzelfallfrage. Fragen Sie die Ausländerbehörde, eine Migrationsberatung oder eine Anwältin / einen Anwalt."
+      }
+    },
+    {
+      "id": "de.residence.permit_renewal",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "residence",
+      "order": 90,
+      "jurisdiction": "DE",
+      "applies_to": {"field": "entry_type", "in": ["national_visa", "visa_free"]},
+      "timing": {"type": "before_anchor", "anchor": "permit_expiry_date", "offset_days": -1, "basis": "legal", "suggested_start_days_before": 84},
+      "depends_on": [{"rule_id": "de.residence.collect_card", "type": "requires", "evidence_source_id": "src.aufenthg.81"}],
+      "required_documents": [
+        {"doc": "passport", "basis": "official"},
+        {"doc": "previous_card", "basis": "official"},
+        {"doc": "admission_or_enrolment", "basis": "commonly_requested"},
+        {"doc": "health_insurance_proof", "basis": "commonly_requested"},
+        {"doc": "proof_of_funds", "basis": "commonly_requested"}
+      ],
+      "sources": [
+        {"source_id": "src.berlin.study_permit", "when": {"field": "city", "eq": "berlin"}},
+        {"source_id": "src.muenchen.study_permit", "when": {"field": "city", "eq": "munich"}},
+        {"source_id": "src.bamf.navi", "when": {"field": "city", "eq": "other"}},
+        {"source_id": "src.aufenthg.81"}
+      ],
+      "effective_from": null,
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Verlängerung der Aufenthaltserlaubnis"],
+      "content": {
+        "en": {
+          "title": "Renew your residence permit before it expires",
+          "summary": "Student residence permits are issued for a limited time (for example two years in Berlin, up to three in Munich). Apply for an extension before the card expires.",
+          "why": "Applying before expiry generally keeps your stay lawful while the authority decides.",
+          "steps": [
+            "Add your card's expiry date in this app (Settings → Your situation).",
+            "Start preparing about three months before expiry — especially proof of study progress and funds.",
+            "Apply via your authority's official route before the expiry date."
+          ],
+          "notes": "The deadline appears once you have added the card's expiry date."
+        },
+        "de": {
+          "title": "Aufenthaltserlaubnis vor Ablauf verlängern",
+          "summary": "Aufenthaltserlaubnisse zum Studium sind befristet (z. B. zwei Jahre in Berlin, bis zu drei in München). Beantragen Sie die Verlängerung vor Ablauf der Karte.",
+          "why": "Ein Antrag vor Ablauf hält Ihren Aufenthalt in der Regel rechtmäßig, bis die Behörde entscheidet.",
+          "steps": [
+            "Ablaufdatum der Karte in der App eintragen (Einstellungen → Ihre Situation).",
+            "Etwa drei Monate vorher mit der Vorbereitung beginnen – besonders Studienfortschritt und Finanzierung.",
+            "Vor dem Ablaufdatum über den offiziellen Weg Ihrer Behörde beantragen."
+          ],
+          "notes": "Die Frist erscheint, sobald Sie das Ablaufdatum der Karte eingetragen haben."
+        }
+      }
+    },
+    {
+      "id": "de.registration.re_register_on_move",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "registration",
+      "order": 100,
+      "jurisdiction": "DE",
+      "applies_to": {"always": true},
+      "timing": {"type": "event", "event": "moving_within_germany"},
+      "depends_on": [],
+      "required_documents": [{"doc": "passport", "basis": "official"}, {"doc": "landlord_confirmation", "basis": "official"}],
+      "sources": [{"source_id": "src.bmg.17"}],
+      "effective_from": "2015-11-01",
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Ummeldung"],
+      "content": {
+        "en": {
+          "title": "When you move within Germany: register again",
+          "summary": "Every time you move into a new home, register the new address within two weeks — also when you move within the same city.",
+          "why": "It is the same legal duty as your first registration. Your foreigners' authority may also change if you move to another town.",
+          "steps": [
+            "Get a new landlord confirmation.",
+            "Register at the registration office of your new place within two weeks.",
+            "Update your address with your university, insurer, bank and the broadcasting fee."
+          ],
+          "notes": "Update your city in this app so that the official links match."
+        },
+        "de": {
+          "title": "Bei Umzug innerhalb Deutschlands: ummelden",
+          "summary": "Bei jedem Umzug melden Sie die neue Adresse innerhalb von zwei Wochen an – auch innerhalb derselben Stadt.",
+          "why": "Es ist dieselbe gesetzliche Pflicht wie bei der ersten Anmeldung. Bei Umzug in eine andere Stadt kann sich auch die Ausländerbehörde ändern.",
+          "steps": [
+            "Neue Wohnungsgeberbestätigung holen.",
+            "Innerhalb von zwei Wochen bei der Meldebehörde des neuen Wohnorts anmelden.",
+            "Adresse bei Hochschule, Krankenkasse, Bank und Rundfunkbeitrag ändern."
+          ],
+          "notes": "Ändern Sie Ihre Stadt in der App, damit die offiziellen Links passen."
+        }
+      }
+    },
+    {
+      "id": "de.registration.deregister_on_leaving",
+      "version": 1,
+      "status": "active",
+      "kind": "official_requirement",
+      "category": "registration",
+      "order": 110,
+      "jurisdiction": "DE",
+      "applies_to": {"always": true},
+      "timing": {"type": "event", "event": "leaving_germany"},
+      "depends_on": [],
+      "required_documents": [{"doc": "passport", "basis": "commonly_requested"}],
+      "sources": [
+        {"source_id": "src.berlin.abmeldung", "when": {"field": "city", "eq": "berlin"}},
+        {"source_id": "src.muenchen.abmeldung", "when": {"field": "city", "eq": "munich"}},
+        {"source_id": "src.bmg.17"}
+      ],
+      "effective_from": "2015-11-01",
+      "effective_until": null,
+      "last_verified_at": "2026-09-25",
+      "review_required": true,
+      "confidence": "high",
+      "official_terms": ["Abmeldung"],
+      "content": {
+        "en": {
+          "title": "When you leave Germany: deregister",
+          "summary": "If you move out and do not move to another home in Germany, deregister within two weeks of moving out.",
+          "why": "It is a legal duty and helps you close contracts such as the broadcasting fee.",
+          "steps": [
+            "Deregister at the registration office (some cities offer it online or by post).",
+            "Keep the deregistration certificate (Abmeldebestätigung).",
+            "Use it to cancel the broadcasting fee and other contracts."
+          ],
+          "notes": "Leaving for a short trip is not moving out."
+        },
+        "de": {
+          "title": "Wenn Sie Deutschland verlassen: abmelden",
+          "summary": "Wenn Sie ausziehen und keine neue Wohnung in Deutschland beziehen, melden Sie sich innerhalb von zwei Wochen nach dem Auszug ab.",
+          "why": "Es ist gesetzlich vorgeschrieben und hilft, Verträge wie den Rundfunkbeitrag zu beenden.",
+          "steps": [
+            "Bei der Meldebehörde abmelden (in manchen Städten auch online oder per Post).",
+            "Die Abmeldebestätigung aufbewahren.",
+            "Damit Rundfunkbeitrag und andere Verträge kündigen."
+          ],
+          "notes": "Eine kurze Reise ist kein Auszug."
+        }
+      }
+    }
+  ],
+  "rule_history": [
+    {
+      "id": "de.work.limits",
+      "version": 1,
+      "status": "superseded",
+      "superseded_by_version": 2,
+      "effective_from": null,
+      "effective_until": "2024-02-29",
+      "summary_en": "Previous limit: 120 full days or 240 half days per year. Replaced by 140/280 under the Skilled Immigration Act reform. Kept for audit only; the effective date requires human verification.",
+      "last_verified_at": "2026-09-25",
+      "review_required": true
+    }
+  ]
+}

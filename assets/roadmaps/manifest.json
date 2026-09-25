@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "active_dataset": "de-students",
+  "datasets": [
+    {
+      "id": "de-students",
+      "version": "2026.09.1",
+      "rules": "assets/roadmaps/de-students/rules.json",
+      "sources": "assets/roadmaps/de-students/sources.json"
+    }
+  ]
+}
