@@ -1,17 +1,35 @@
-# newcomer_os
+# Erstmal (repo: Newcomer OS)
 
-Erstmal - first 90 days checklist for international students in Germany
+A private, offline-first Flutter app that gives international students arriving in Germany a personal, ordered checklist of post-arrival administrative steps — each with its official source and last-checked date.
 
-## Getting Started
+**Status:** MVP built and tested; pre-beta. Not published. Rules need human source/legal review before launch. Start with [`RELEASE_REPORT.md`](RELEASE_REPORT.md).
 
-This project is a starting point for a Flutter application.
+## Quick start
+```bash
+flutter pub get
+flutter analyze
+flutter test                 # 95 tests incl. dataset integrity
+flutter run                  # Android emulator / iOS simulator
+```
+Flutter 3.47.5 stable (pinned in CI).
 
-A few resources to get you started if this is your first Flutter project:
+## Layout
+| Path | What |
+|------|------|
+| `assets/roadmaps/` | Versioned rules + sources dataset (the product's knowledge) |
+| `lib/domain/` | Rules engine (pure Dart): conditions, deadlines, dependencies, validator |
+| `lib/data/` | Dataset loader, local JSON store with migrations |
+| `lib/ui/` | Screens |
+| `docs/research/` | Corridor research, evidence ledger, red teams, source corpus, review & validation debt |
+| `docs/product/` | Strategy, PRD, UX spec, analytics, brand, disclaimer |
+| `docs/engineering/` | Technical plan, rules authoring guide, security & privacy |
+| `docs/business/` | Monetization, distribution |
+| `legal/` | Draft privacy policy & terms (require legal review) |
+| `release/` | Store listing drafts and signing steps |
+| `landing/` | Static landing page |
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Editing rules
+See [`docs/engineering/RULES_AUTHORING.md`](docs/engineering/RULES_AUTHORING.md). CI rejects datasets that fail validation.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Disclaimer
+Erstmal is an independent project, not affiliated with any government, authority or university. It provides general information, not legal advice.

@@ -127,10 +127,11 @@ class LocalStore {
 
   static Map<String, Object?> _migrateV1toV2(Map<String, Object?> json) {
     final completed = (json['completed'] as List? ?? const []).cast<String>();
-    // v1 did not record when or against which version a task was completed.
-    // Version 0 marks these as "completed before versioning" so the resolver
-    // flags them for re-checking; the date is unknown, so the migration date
-    // of the profile's arrival is used as the most conservative anchor.
+    // v1 did not record when or against which rule version a task was
+    // completed. Version 0 makes the resolver flag these tasks as "updated
+    // since you completed" so the user re-checks them. The arrival date is
+    // used as completion date: the earliest plausible date, so follow-up
+    // dates derived from it are never later than the real ones.
     final profile = json['profile'] as Map<String, Object?>?;
     final fallbackDate = (profile?['arrival_date'] as String?) ?? '2026-01-01';
     return {

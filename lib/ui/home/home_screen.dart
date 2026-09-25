@@ -24,7 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final controller = AppScope.of(context);
-    final roadmap = controller.roadmap(contentLanguage(context))!;
+    final roadmap = controller.roadmap(contentLanguage(context));
+    // Briefly null while the root switches screens (e.g. after deleting data).
+    if (roadmap == null) return const SizedBox.shrink();
     final theme = Theme.of(context);
 
     return DefaultTabController(
